@@ -1,0 +1,21 @@
+.card {
+    border: none; /* Remove border for a cleaner look */
+    border-radius: 10px; /* Smooth rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: transform 0.2s; /* Add a hover effect */
+    height: 150px;
+  }
+  
+  .card:hover {
+    transform: scale(1.05); /* Slightly zoom the card on hover */
+  }
+  
+  .card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  .btn {
+    font-size: 0.9rem;
+  }
+  

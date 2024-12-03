@@ -1,0 +1,42 @@
+<div class="container mt-4">
+    <h2 class="mb-4">Q&A Interface</h2>
+  
+    <!-- Question Input -->
+    <div class="form-group">
+      <label for="questionInput">Ask a Question</label>
+      <input
+        type="text"
+        class="form-control"
+        id="questionInput"
+        placeholder="Type your question here..."
+        [(ngModel)]="question"
+      />
+    </div>
+  
+    <!-- Submit Button -->
+    <button class="btn btn-primary mt-2" (click)="askQuestion()">Submit</button>
+  
+    <!-- Error Alert -->
+    <div *ngIf="error" class="alert alert-danger mt-3">
+      {{ error }}
+    </div>
+  
+    <!-- Answer Section -->
+    <div *ngIf="answer" class="mt-4">
+      <h4>Answer</h4>
+      <div class="alert alert-success">
+        {{ answer }}
+      </div>
+    </div>
+  
+    <!-- documents Section -->
+    <div *ngIf="documents.length > 0" class="mt-4">
+      <h4>Relevant documents</h4>
+      <ul class="list-group">
+        <li *ngFor="let excerpt of documents" class="list-group-item">
+          <strong>{{ excerpt.title }}</strong>: {{ excerpt.description }}
+        </li>
+      </ul>
+    </div>
+  </div>
+  

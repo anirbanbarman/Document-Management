@@ -1,0 +1,46 @@
+<div class="container mt-4">
+    <!-- Document Upload Form -->
+    <div class="row ">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">Upload Document</div>
+          <div class="card-body">
+            <form (ngSubmit)="onUploadSubmit(fileInput)" enctype="multipart/form-data">
+              <div class="mb-3">
+                <label for="file" class="form-label">Choose Document</label>
+                <input #fileInput 
+                 type="file" class="form-control" id="file" (change)="onFileChange($event)" required>
+              </div>
+              <button type="submit" class="btn btn-primary" [disabled]="!selectedFile">Upload</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Document List -->
+    <div class="mt-4">
+      <h4>Uploaded Documents</h4>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Document Name</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let document of documents">
+            <td> {{ document.name }}</td>
+            <td>
+              <a 
+              class="btn btn-secondary me-2" 
+              [href]="document.url" 
+              target="_blank">View</a>
+              <button class="btn btn-danger" (click)="deleteDocument(document.name)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

@@ -1,0 +1,63 @@
+<div class="container">
+  <h3>User Management</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Username</th>
+        <th scope="col">Role</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.username }}</td>
+        <td>
+          <!-- Show role text if not in edit mode -->
+          <span *ngIf="!user.isEditing">{{ user.role }}</span>
+
+          <!-- Show dropdown when in edit mode -->
+          <select
+            *ngIf="user.isEditing"
+            [(ngModel)]="user.role"
+            class="form-select"
+          >
+            <option *ngFor="let role of roles" [value]="role">
+              {{ role }}
+            </option>
+          </select>
+        </td>
+        <td>
+          <!-- Edit Button -->
+          <button
+            class="btn btn-warning me-2"
+            *ngIf="!user.isEditing"
+            (click)="editRole(user)"
+          >
+            Edit Role
+          </button>
+
+          <!-- Save and Cancel Buttons -->
+          <button
+            class="btn btn-success me-2"
+            *ngIf="user.isEditing"
+            (click)="saveRole(user)"
+          >
+            Save
+          </button>
+          <button
+            class="btn btn-secondary mx-2"
+            *ngIf="user.isEditing"
+            (click)="cancelEdit(user)"
+          >
+            Cancel
+          </button>
+
+          <!-- Delete Button -->
+          <button class="btn btn-danger" (click)="deleteUser(user)">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,36 @@
+<div class="container">
+  <h3>Ingestion Trigger</h3>
+  <div>
+    <input
+      type="text"
+      [(ngModel)]="source"
+      placeholder="Enter Source"
+      class="form-control"
+    />
+    <button class="btn btn-primary mt-2" (click)="triggerIngestion()">
+      Trigger Ingestion
+    </button>
+  </div>
+  <p *ngIf="message">{{ message }}</p>
+  <p *ngIf="processId">Process ID: {{ processId }}</p>
+</div>
+
+<div class="container">
+  <h3>Ingestion Management</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Source</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let process of processes">
+        <td>{{ process.id }}</td>
+        <td>{{ process.source }}</td>
+        <td>{{ process.status }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
